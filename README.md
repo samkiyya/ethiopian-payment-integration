@@ -142,3 +142,11 @@ Tests mock external APIs and repositories, so they run instantly without touchin
 ## Further Reading
 
 Provider-specific onboarding docs live in `docs/*.md`. Keep them synchronized with any contract changes from Chapa, SantiPay, or AddisPay.
+
+## Author
+
+Built and maintained by Samuel. Contributions are welcome via pull requests.
+
+## License
+
+Released under the [MIT License](LICENSE).
