@@ -14,7 +14,14 @@ const SantiPayTransactionSchema = new Schema(
   { timestamps: true }
 );
 
-const getSantiPayTransactionModel = () =>
-  models.SantiPayTransaction || model('SantiPayTransaction', SantiPayTransactionSchema);
+const getSantiPayTransactionModel = (connection) => {
+  if (connection) {
+    return (
+      connection.models.SantiPayTransaction ||
+      connection.model('SantiPayTransaction', SantiPayTransactionSchema)
+    );
+  }
+  return models.SantiPayTransaction || model('SantiPayTransaction', SantiPayTransactionSchema);
+};
 
 module.exports = getSantiPayTransactionModel;

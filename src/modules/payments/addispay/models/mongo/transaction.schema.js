@@ -14,7 +14,14 @@ const AddisPayTransactionSchema = new Schema(
   { timestamps: true }
 );
 
-const getAddisPayTransactionModel = () =>
-  models.AddisPayTransaction || model('AddisPayTransaction', AddisPayTransactionSchema);
+const getAddisPayTransactionModel = (connection) => {
+  if (connection) {
+    return (
+      connection.models.AddisPayTransaction ||
+      connection.model('AddisPayTransaction', AddisPayTransactionSchema)
+    );
+  }
+  return models.AddisPayTransaction || model('AddisPayTransaction', AddisPayTransactionSchema);
+};
 
 module.exports = getAddisPayTransactionModel;

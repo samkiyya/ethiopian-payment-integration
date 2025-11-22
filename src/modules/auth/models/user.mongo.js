@@ -9,6 +9,11 @@ const UserProfileSchema = new Schema(
   { timestamps: true }
 );
 
-const getUserProfileModel = () => models.UserProfile || model('UserProfile', UserProfileSchema);
+const getUserProfileModel = (connection) => {
+  if (connection) {
+    return connection.models.UserProfile || connection.model('UserProfile', UserProfileSchema);
+  }
+  return models.UserProfile || model('UserProfile', UserProfileSchema);
+};
 
 module.exports = getUserProfileModel;
